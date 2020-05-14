@@ -35,4 +35,10 @@ public class User {
     public String toString(){
         return username+" - "+name+" "+surname+'\n'+email+" "+phoneNumber+", role: "+role;
     }
+
+    public boolean validCredentials(String username, String password){
+        if(username.equals(this.username)&&password.equals(this.password))
+            return true;
+        return false;
+    }
 }

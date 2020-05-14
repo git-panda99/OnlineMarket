@@ -5,6 +5,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.Classes.User;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -14,6 +17,7 @@ public class Main extends Application {
         primaryStage.setTitle("Login - Online Market");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
+
     }
 
 

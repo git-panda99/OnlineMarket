@@ -1,5 +1,7 @@
 package main.Classes;
 
+import javax.management.relation.Role;
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class User {
@@ -10,5 +12,27 @@ public class User {
     private String email;
     private String phoneNumber;
     private UserRole role;
-    private ArrayList<Product> productList; //to be revised in future
+    private ArrayList<Product> productList=new ArrayList<Product>(); //to be revised in future
+
+    public User(String username, String password, String name, String surnmae, String email, String phoneNumber, UserRole role){
+        this.username=username;
+        this.password=password;
+        this.name=name;
+        this.surname=surnmae;
+        this.email=email;
+        this.phoneNumber=phoneNumber;
+        this.role=role;
+    }
+
+    public void addProduct(Product p){
+        productList.add(p);
+    }
+
+    public void addAllProducts(ArrayList<Product> productList){
+        this.productList.addAll(productList);
+    }
+
+    public String toString(){
+        return username+" - "+name+" "+surname+'\n'+email+" "+phoneNumber+", role: "+role;
+    }
 }

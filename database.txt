@@ -1,0 +1,1 @@
+[{"username":"admin","password":"admin","name":"The","surname":"Administrator","email":"","phoneNumber":"","role":"ADMIN","productList":[]}]

@@ -3,6 +3,7 @@ package main.Classes;
 import javax.management.relation.Role;
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class User {
     private String username;
@@ -41,4 +42,12 @@ public class User {
             return true;
         return false;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(o instanceof User)
+        return ((User) o).username.equals(username);
+        return false;
+    }
+
 }

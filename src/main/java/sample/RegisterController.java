@@ -44,13 +44,34 @@ public class RegisterController {
         else
             role=UserRole.CUSTOMER;
 
+        if(username.trim().isEmpty()||password.trim().isEmpty()||name.trim().isEmpty()||
+        surname.trim().isEmpty()||email.trim().isEmpty()||phoneNumber.trim().isEmpty()){
+            System.out.println("All fields are mandatory");
+
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration Unsuccessful");
+            alert.setContentText("All fields are mandatory. Please fill them in!");
+
+            alert.showAndWait();
+            return;
+        }
+
         User user=new User(username, password, name, surname, email, phoneNumber, role);
 
+        //check if unique
         ArrayList<User> ul=ReadWriteFile.readFile();
-        ul.add(user);
+        if(!ul.contains(user)){
+            ul.add(user);
+            ReadWriteFile.writeFile(ul);
+            System.out.println(user);;
+        }else{
+            System.out.println("User already exists");
 
-        ReadWriteFile.writeFile(ul);
+            Alert alert=new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Registration Unsuccessful");
+            alert.setContentText("Username already exits. Please try another one!");
 
-        System.out.println(user);;
+            alert.showAndWait();
+        }
     }
 }

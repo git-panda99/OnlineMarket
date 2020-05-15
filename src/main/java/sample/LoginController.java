@@ -10,11 +10,8 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 import main.Classes.ReadWriteFile;
 import main.Classes.User;
-import main.Classes.UserRole;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -26,7 +23,7 @@ public class LoginController {
     @FXML
     private Hyperlink hyperlink;
     @FXML
-    private void loginButtonClicked(){
+    private void loginButtonClicked(ActionEvent event)throws Exception{
         String user= textField.getText();
         String password= passwordField.getText();
         /*ArrayList<User> userArrayList=new ArrayList<User>();
@@ -42,6 +39,8 @@ public class LoginController {
             if(i.validCredentials(user, password)){
                 System.out.println("Login successfull");
                 found=true;
+                Main.setLoggedUser(i);
+                loginSuccessfulRedirect(event);
                 break;
             }
         }
@@ -63,6 +62,16 @@ public class LoginController {
     @FXML
     private void registerHyperlinkClicked(ActionEvent event)throws Exception {
         Parent registerParent = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Scene registerScene=new Scene(registerParent);
+
+        Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        primaryStage.setScene(registerScene);
+        primaryStage.show();
+    }
+
+    private void loginSuccessfulRedirect(ActionEvent event)throws Exception {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
         Scene registerScene=new Scene(registerParent);
 
         Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();

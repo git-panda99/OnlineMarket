@@ -42,6 +42,7 @@ public class LoginController {
             if(i.validCredentials(user, password)){
                 System.out.println("Login successfull");
                 found=true;
+                Main.setLoggedUser(i);
                 break;
             }
         }

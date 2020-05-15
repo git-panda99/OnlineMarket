@@ -15,18 +15,26 @@ public class User {
     private UserRole role;
     private ArrayList<Product> productList=new ArrayList<Product>(); //to be revised in future
 
-    public User(String username, String password, String name, String surnmae, String email, String phoneNumber, UserRole role){
+    public User(String username, String password, String name, String surnamae, String email, String phoneNumber, UserRole role){
         this.username=username;
         this.password=password;
         this.name=name;
-        this.surname=surnmae;
+        this.surname=surnamae;
         this.email=email;
         this.phoneNumber=phoneNumber;
         this.role=role;
     }
 
     public void addProduct(Product p){
+        if(productList.contains(p)){
+            System.out.println("Product already exists");
+            return;
+        }
         productList.add(p);
+    }
+
+    public boolean containsProduct(Product p){
+        return productList.contains(p);
     }
 
     public void addAllProducts(ArrayList<Product> productList){

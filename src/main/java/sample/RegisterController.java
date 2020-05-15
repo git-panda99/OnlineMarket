@@ -32,16 +32,25 @@ public class RegisterController {
 
     @FXML
     private void registerButtonClicked(){
-        String usernamse;
-        String password;
-        String name;
-        String surname;
-        String email;
-        String phoneNumber;
+        String username=usernameField.getText();
+        String password=passwordField.getText();
+        String name=namseField.getText();
+        String surname=surrnameField.getText();
+        String email=emailField.getText();
+        String phoneNumber=phoneNumberField.getText();
         UserRole role;
         if(farmerButton.isSelected())
             role=UserRole.FARMER;
         else
             role=UserRole.CUSTOMER;
+
+        User user=new User(username, password, name, surname, email, phoneNumber, role);
+
+        ArrayList<User> ul=ReadWriteFile.readFile();
+        ul.add(user);
+
+        ReadWriteFile.writeFile(ul);
+
+        System.out.println(user);;
     }
 }

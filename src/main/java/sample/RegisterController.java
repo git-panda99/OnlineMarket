@@ -1,7 +1,13 @@
 package main.java.sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import main.Classes.ReadWriteFile;
 import main.Classes.User;
 import main.Classes.UserRole;
@@ -29,6 +35,8 @@ public class RegisterController {
     private RadioButton farmerButton;
     @FXML
     private ToggleGroup toggleGroup;
+    @FXML
+    private Hyperlink loginHyperlink;
 
     @FXML
     private void registerButtonClicked(){
@@ -89,5 +97,16 @@ public class RegisterController {
 
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    public void loginHyperlinkClicked(ActionEvent event)throws Exception {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene registerScene=new Scene(registerParent);
+
+        Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        primaryStage.setScene(registerScene);
+        primaryStage.show();
     }
 }

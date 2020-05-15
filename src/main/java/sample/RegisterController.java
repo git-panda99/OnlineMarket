@@ -64,6 +64,22 @@ public class RegisterController {
             ul.add(user);
             ReadWriteFile.writeFile(ul);
             System.out.println(user);;
+
+            Alert alert=new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Registration Successful");
+            alert.setContentText("User "+username+" was added successfully");
+
+            //empty fields
+            usernameField.setText("");
+            passwordField.setText("");
+            namseField.setText("");
+            surrnameField.setText("");
+            emailField.setText("");
+            phoneNumberField.setText("");
+            farmerButton.setSelected(false);
+            customerButton.setSelected(false);
+
+            alert.showAndWait();
         }else{
             System.out.println("User already exists");
 

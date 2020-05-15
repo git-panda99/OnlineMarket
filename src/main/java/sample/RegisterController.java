@@ -27,6 +27,8 @@ public class RegisterController {
     private RadioButton customerButton;
     @FXML
     private RadioButton farmerButton;
+    @FXML
+    private ToggleGroup toggleGroup;
 
     @FXML
     private void registerButtonClicked(){

@@ -20,7 +20,7 @@
                         <Font size="36.0" />
                     </font>
                 </Label>
-                <Hyperlink alignment="CENTER" contentDisplay="RIGHT" layoutX="125.0" layoutY="361.0" prefHeight="25.0" prefWidth="235.0" text="New user? Create an account" />
+                <Hyperlink fx:id="hyperlink" alignment="CENTER" contentDisplay="RIGHT" layoutX="125.0" layoutY="361.0" onAction="#registerHyperlinkClicked" onMouseClicked="#registerHyperlinkClicked" prefHeight="25.0" prefWidth="235.0" text="New user? Create an account" />
             </children>
         </AnchorPane>
     </children>

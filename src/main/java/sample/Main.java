@@ -10,6 +10,8 @@ import main.Classes.User;
 import java.util.ArrayList;
 
 public class Main extends Application {
+    //Parent loginRoot=FXMLLoader.load(getClass().getResource("Login.fxml"));
+    //Parent registerRoot=FXMLLoader.load(getClass().getResource("Register.fxml"));
 
     @Override
     public void start(Stage primaryStage) throws Exception{

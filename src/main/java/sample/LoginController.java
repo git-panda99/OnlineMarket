@@ -1,12 +1,20 @@
 package main.java.sample;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import main.Classes.ReadWriteFile;
 import main.Classes.User;
 import main.Classes.UserRole;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class LoginController {
     @FXML
@@ -50,5 +58,16 @@ public class LoginController {
             textField.setText("");
             passwordField.setText("");
         }
+    }
+
+    @FXML
+    private void registerHyperlinkClicked(ActionEvent event)throws Exception {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("Register.fxml"));
+        Scene registerScene=new Scene(registerParent);
+
+        Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        primaryStage.setScene(registerScene);
+        primaryStage.show();
     }
 }

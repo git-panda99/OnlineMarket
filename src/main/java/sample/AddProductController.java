@@ -6,11 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import main.Classes.Product;
-import main.Classes.ReadWriteFile;
 import main.Classes.User;
-
-import java.util.ArrayList;
-
 
 public class AddProductController {
     @FXML private TextField titleField;

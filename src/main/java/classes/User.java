@@ -1,9 +1,8 @@
-package main.Classes;
+package classes;
 
-import javax.management.relation.Role;
-//import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Objects;
+
+//import javax.swing.*;
 
 public class User {
     private String username;
@@ -58,4 +57,7 @@ public class User {
         return false;
     }
 
+    public ArrayList<Product> getProductList() {
+        return productList;
+    }
 }

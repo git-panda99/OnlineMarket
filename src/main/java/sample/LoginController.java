@@ -1,5 +1,7 @@
-package main.java.sample;
+package sample;
 
+import classes.ReadWriteFile;
+import classes.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import main.Classes.ReadWriteFile;
-import main.Classes.User;
 
 import java.util.ArrayList;
 
@@ -71,7 +71,7 @@ public class LoginController {
     }
 
     private void loginSuccessfulRedirect(ActionEvent event)throws Exception {
-        Parent registerParent = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
+        Parent registerParent = FXMLLoader.load(getClass().getResource("ProductCatalog.fxml"));
         Scene registerScene=new Scene(registerParent);
 
         Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();

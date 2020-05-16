@@ -1,4 +1,4 @@
-package main.Classes;
+package classes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -12,7 +12,7 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class ReadWriteFile {
-    private static String filePath = "database.txt";
+    private static String filePath = "src/main/resources/database.txt";
 
     /*public ReadWriteFile(String filePath){
         this.filePath=filePath;

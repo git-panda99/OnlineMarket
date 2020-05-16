@@ -1,4 +1,4 @@
-package main.java.sample;
+package sample;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,9 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import main.Classes.ReadWriteFile;
-import main.Classes.User;
-import main.Classes.UserRole;
+import classes.ReadWriteFile;
+import classes.User;
+import classes.UserRole;
 
 import java.util.ArrayList;
 

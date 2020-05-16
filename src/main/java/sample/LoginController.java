@@ -1,5 +1,6 @@
 package sample;
 
+import classes.Password;
 import classes.ReadWriteFile;
 import classes.User;
 import javafx.event.ActionEvent;

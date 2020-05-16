@@ -26,6 +26,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ProductCatalogController {
 
@@ -33,12 +34,7 @@ public class ProductCatalogController {
     private GridPane gridPane;
     private static Product productInProductPage;
     private static String farmerProductInProductPage;
-
-    /*public ProductCatalogController(){
-        initialize();
-    }*/
-
-
+  
     public void initialize(){
         ArrayList<User> ul= ReadWriteFile.readFile();
         int i=0,j=0;

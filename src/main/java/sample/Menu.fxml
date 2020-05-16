@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="menuAnchorPane" fx:id="menuAnchorPane" prefHeight="600.0" prefWidth="800.0" styleClass="menuAnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MenuController">
+   <children>
+      <AnchorPane prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: white;">
+         <children>
+            <Label fx:id="helloLabel" layoutX="42.0" layoutY="187.0" text="Hello Label">
+               <font>
+                  <Font size="26.0" />
+               </font>
+            </Label>
+            <Hyperlink fx:id="productCatalogHyperlink" layoutX="50.0" layoutY="237.0" onAction="#productCatalogHyperlinkClicked" text="Product Catalog">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="usersHyperlink" layoutX="48.0" layoutY="375.0" onAction="#usersHyperlinkClicked" text="Manage Users">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="addProductsHyperlink" layoutX="50.0" layoutY="330.0" onAction="#addProductHyperlinkClicked" text="Add Products">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="myOrdersHyperlink" layoutX="50.0" layoutY="283.0" onAction="#myOrdersHyperlinkClicked" text="My Orders">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+            <Hyperlink fx:id="logoutHyperlink" layoutX="50.0" layoutY="422.0" onAction="#logoutHyperlinkClicked" text="Logout">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Hyperlink>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

@@ -70,7 +70,27 @@ public class User {
         return orderList;
     }
 
-    public String getUsername() {
+  public String getUsername() {
         return username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public UserRole getRole() {
+        return role;
     }
 }

@@ -9,11 +9,14 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
 public class LoginController {
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private Button loginButton;
     @FXML
@@ -22,6 +25,10 @@ public class LoginController {
     private TextField textField;
     @FXML
     private Hyperlink hyperlink;
+    @FXML
+    private void initialize(){
+        anchorPane.getStylesheets().add("style.css");
+    }
     @FXML
     private void loginButtonClicked(ActionEvent event)throws Exception{
         String user= textField.getText();
@@ -71,7 +78,7 @@ public class LoginController {
     }
 
     private void loginSuccessfulRedirect(ActionEvent event)throws Exception {
-        Parent registerParent = FXMLLoader.load(getClass().getResource("ProductCatalog.fxml"));
+        Parent registerParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
         Scene registerScene=new Scene(registerParent);
 
         Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();

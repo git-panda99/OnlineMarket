@@ -19,16 +19,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class ProductCatalogController {
 
-    @FXML
-    private GridPane gridPane;
-
-    /*public ProductCatalogController(){
-        initialize();
-    }*/
-
+    @FXML private GridPane gridPane;
 
     public void initialize(){
         ArrayList<User> ul= ReadWriteFile.readFile();

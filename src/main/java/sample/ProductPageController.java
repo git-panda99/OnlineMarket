@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -30,10 +31,13 @@ import java.util.ArrayList;
 
 public class ProductPageController {
     @FXML
+    private AnchorPane anchorPaneProductPage;
+    @FXML
     private HBox detailImageHBox =new HBox();
 
 
     public void initialize(){
+        anchorPaneProductPage.getStylesheets().add("style.css");
         /*productInProductPage=new Product(ProductCatalogController.getProductInProductPage().getTitle(),
                 ProductCatalogController.getProductInProductPage().getDescription(),
                 ProductCatalogController.getProductInProductPage().getStock(),

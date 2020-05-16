@@ -6,13 +6,19 @@ import classes.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -22,6 +28,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class AddProductController {
+    @FXML private AnchorPane anchorPaneAddProduct;
     @FXML private TextField titleField;
     @FXML private TextArea descriptionArea;
     @FXML private TextField stockField;
@@ -32,6 +39,11 @@ public class AddProductController {
     private BufferedImage bufferedImage=null;
     private File fileSource;
     private File fileDestination;
+
+    @FXML
+    private void initialize(){
+        anchorPaneAddProduct.getStylesheets().add("style.css");
+    }
 
     @FXML public void addProduct(){
         String title=titleField.getText();
@@ -121,6 +133,17 @@ public class AddProductController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void menuHyperlinkClicked(ActionEvent event)throws Exception {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene registerScene=new Scene(registerParent);
+
+        Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        primaryStage.setScene(registerScene);
+        primaryStage.show();
     }
 
 }

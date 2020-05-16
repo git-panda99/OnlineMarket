@@ -1,4 +1,4 @@
-package main.Classes;
+package classes;
 
 public enum UserRole {
     CUSTOMER("Customer"),

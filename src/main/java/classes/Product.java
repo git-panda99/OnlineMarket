@@ -1,4 +1,4 @@
-package main.Classes;
+package classes;
 
 import java.util.Objects;
 
@@ -7,13 +7,14 @@ public class Product {
     private String description;
     private int stock;
     private double price;
-    //to do image
+    //private Image image;
 
     public Product(String title, String description, int stock, double price) {
         this.title = title;
         this.description = description;
         this.stock = stock;
         this.price = price;
+        //this.image = image;
     }
 
     public String getTitle() {

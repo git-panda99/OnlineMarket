@@ -1,4 +1,4 @@
-package main.Classes;
+package classes;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

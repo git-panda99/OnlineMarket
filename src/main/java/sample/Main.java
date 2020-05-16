@@ -1,13 +1,11 @@
-package main.java.sample;
+package sample;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import main.Classes.User;
-
-import java.util.ArrayList;
+import classes.User;
 
 public class Main extends Application {
     //Parent loginRoot=FXMLLoader.load(getClass().getResource("Login.fxml"));

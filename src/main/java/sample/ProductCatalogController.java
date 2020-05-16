@@ -1,4 +1,4 @@
-package main.java.sample;
+package sample;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,9 +7,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
-import main.Classes.Product;
-import main.Classes.ReadWriteFile;
-import main.Classes.User;
+import classes.Product;
+import classes.ReadWriteFile;
+import classes.User;
 
 import java.util.ArrayList;
 

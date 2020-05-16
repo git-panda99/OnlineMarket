@@ -6,7 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import main.Classes.Product;
+import main.Classes.ReadWriteFile;
 import main.Classes.User;
+
+import java.util.ArrayList;
 
 public class AddProductController {
     @FXML private TextField titleField;
@@ -26,7 +29,7 @@ public class AddProductController {
         }
         double price=0;
         try {
-            price=Double.parseDouble(stockField.getText());
+            price=Double.parseDouble(priceField.getText());
         }catch (NumberFormatException e) {
             price = 0;
         }
@@ -41,11 +44,13 @@ public class AddProductController {
             alert.showAndWait();
             return;
         }
-
+        ArrayList<User> ul= ReadWriteFile.readFile();
         Product newProduct=new Product(title,description,stock,price);
         User user=Main.getLoggedUser();
-        if(!user.containsProduct(newProduct)){
-            user.addProduct(newProduct);
+        int index=ul.indexOf(user);
+        if(!ul.get(index).containsProduct(newProduct)){
+            ul.get(index).addProduct(newProduct);
+            ReadWriteFile.writeFile(ul);
             System.out.println("Added new product");
 
             Alert alert=new Alert(Alert.AlertType.INFORMATION);

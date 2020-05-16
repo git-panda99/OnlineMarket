@@ -60,4 +60,8 @@ public class User {
     public ArrayList<Product> getProductList() {
         return productList;
     }
+
+    public String getUsername() {
+        return username;
+    }
 }

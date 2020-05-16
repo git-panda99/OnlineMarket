@@ -1,13 +1,17 @@
 package sample;
 
 import classes.Product;
+import classes.ReadWriteFile;
+import classes.User;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -21,6 +25,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ProductPageController {
     @FXML
@@ -36,7 +41,7 @@ public class ProductPageController {
 
          */
         Product productInProductPage = ProductCatalogController.getProductInProductPage();
-        //String farmerProductInProductPage = ProductCatalogController.getFarmerProductInProductPage() + "";
+        String farmerProductInProductPage = ProductCatalogController.getFarmerProductInProductPage() + "";
         if(productInProductPage!=null) {
             //details
             VBox productVBox = new VBox();
@@ -51,6 +56,29 @@ public class ProductPageController {
             HBox priceStockHBox = new HBox(priceLabel, stockLabel);
             priceStockHBox.setStyle("-fx-padding: 0 0 10 0");
             Button orderButton = new Button("Order");
+            orderButton.setOnAction(new EventHandler<>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    ArrayList<User> ul = ReadWriteFile.readFile();
+                    for (User u : ul)
+                        if (u.getUsername().equals(farmerProductInProductPage))
+                            for (Product p : u.getProductList())
+                                if (p.getTitle().equals(productInProductPage.getTitle())) {
+                                    p.order(2);
+                                    stockLabel.setText("in Stock: " + productInProductPage.getStock());
+                                    System.out.println("Stock -1");
+
+                                    Alert alert=new Alert(Alert.AlertType.INFORMATION);
+                                    alert.setTitle("Order Successful");
+                                    alert.setContentText("You ordered product "+p.getTitle()+" successfully");
+                                    alert.showAndWait();
+                                    ReadWriteFile.writeFile(ul);
+                                    detailImageHBox.getChildren().clear();
+                                    productInProductPage.setStock(p.getStock());
+                                    initialize();
+                                }
+                }
+            });
             Label descriptionArea= new Label("Product Description: "+productInProductPage.getDescription());
             productVBox.getChildren().addAll(titleLabel, priceStockHBox, orderButton,descriptionArea);
             //Image

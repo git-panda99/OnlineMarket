@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class User {
     private String username;
-    private String password;
+    private Password password;
     private String name;
     private String surname;
     private String email;
@@ -14,9 +14,9 @@ public class User {
     private UserRole role;
     private ArrayList<Product> productList=new ArrayList<Product>(); //to be revised in future
 
-    public User(String username, String password, String name, String surnamae, String email, String phoneNumber, UserRole role){
+    public User(String username, String passwordString, String name, String surnamae, String email, String phoneNumber, UserRole role) throws Exception{
         this.username=username;
-        this.password=password;
+        this.password=new Password(passwordString);
         this.name=name;
         this.surname=surnamae;
         this.email=email;
@@ -44,8 +44,8 @@ public class User {
         return username+" - "+name+" "+surname+'\n'+email+" "+phoneNumber+", role: "+role;
     }
 
-    public boolean validCredentials(String username, String password){
-        if(username.equals(this.username)&&password.equals(this.password))
+    public boolean validCredentials(String username, String password)throws Exception{
+        if(username.equals(this.username)&&(new Password(password, this.password.getSalt())).equals(this.password))
             return true;
         return false;
     }

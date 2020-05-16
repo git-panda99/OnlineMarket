@@ -47,7 +47,7 @@ public class RegisterController {
     }
 
     @FXML
-    private void registerButtonClicked(){
+    private void registerButtonClicked() throws Exception{
         String username=usernameField.getText();
         String password=passwordField.getText();
         String name=namseField.getText();
@@ -76,6 +76,8 @@ public class RegisterController {
 
         //check if unique
         ArrayList<User> ul=ReadWriteFile.readFile();
+        if(ul==null)
+            ul=new ArrayList<User>();
         if(!ul.contains(user)){
             ul.add(user);
             ReadWriteFile.writeFile(ul);

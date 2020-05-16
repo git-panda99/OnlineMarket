@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -55,6 +56,10 @@ public class ProductPageController {
             stockLabel.setStyle("-fx-padding: 4 2 2 5");
             HBox priceStockHBox = new HBox(priceLabel, stockLabel);
             priceStockHBox.setStyle("-fx-padding: 0 0 10 0");
+            Label quantityLabel = new Label("Choose quantity: ");
+            quantityLabel.setFont(new Font("Arial", 14));
+            TextField quantityField =new TextField("1");
+            HBox chooseQuantityHBox = new HBox(quantityLabel, quantityField);
             Button orderButton = new Button("Order");
             orderButton.setOnAction(new EventHandler<>() {
                 @Override
@@ -64,23 +69,30 @@ public class ProductPageController {
                         if (u.getUsername().equals(farmerProductInProductPage))
                             for (Product p : u.getProductList())
                                 if (p.getTitle().equals(productInProductPage.getTitle())) {
-                                    p.order(2);
-                                    stockLabel.setText("in Stock: " + productInProductPage.getStock());
-                                    System.out.println("Stock -1");
+                                    int q=Integer.parseInt( quantityField.getText());
+                                    if(p.order(q)) {
+                                        stockLabel.setText("in Stock: " + productInProductPage.getStock());
+                                        System.out.println("Stock -1");
 
-                                    Alert alert=new Alert(Alert.AlertType.INFORMATION);
-                                    alert.setTitle("Order Successful");
-                                    alert.setContentText("You ordered product "+p.getTitle()+" successfully");
-                                    alert.showAndWait();
-                                    ReadWriteFile.writeFile(ul);
-                                    detailImageHBox.getChildren().clear();
-                                    productInProductPage.setStock(p.getStock());
-                                    initialize();
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setTitle("Order Successful");
+                                        alert.setContentText("You ordered product " + p.getTitle() + " successfully");
+                                        alert.showAndWait();
+                                        ReadWriteFile.writeFile(ul);
+                                        detailImageHBox.getChildren().clear();
+                                        productInProductPage.setStock(p.getStock());
+                                        initialize();
+                                    }else{
+                                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setTitle("Order Unsuccessful");
+                                        alert.setContentText("Not enough stock");
+                                        alert.showAndWait();
+                                    }
                                 }
                 }
             });
             Label descriptionArea= new Label("Product Description: "+productInProductPage.getDescription());
-            productVBox.getChildren().addAll(titleLabel, priceStockHBox, orderButton,descriptionArea);
+            productVBox.getChildren().addAll(titleLabel, priceStockHBox, chooseQuantityHBox, orderButton,descriptionArea);
             //Image
             ImageView imageView = new ImageView();
             try {

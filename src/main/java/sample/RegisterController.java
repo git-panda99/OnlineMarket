@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import classes.ReadWriteFile;
 import classes.User;
@@ -15,6 +16,8 @@ import classes.UserRole;
 import java.util.ArrayList;
 
 public class RegisterController {
+    @FXML
+    private AnchorPane registerAnchorPane;
     @FXML
     private Button registerButton;
     @FXML
@@ -37,6 +40,11 @@ public class RegisterController {
     private ToggleGroup toggleGroup;
     @FXML
     private Hyperlink loginHyperlink;
+
+    @FXML
+    private void initialize(){
+        registerAnchorPane.getStylesheets().add("style.css");
+    }
 
     @FXML
     private void registerButtonClicked(){

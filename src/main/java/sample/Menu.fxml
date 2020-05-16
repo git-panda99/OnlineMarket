@@ -9,7 +9,7 @@
    <children>
       <AnchorPane prefHeight="600.0" prefWidth="450.0" style="-fx-background-color: white;">
          <children>
-            <Label fx:id="helloLabel" layoutX="56.0" layoutY="191.0" text="Hello Label">
+            <Label fx:id="helloLabel" layoutX="42.0" layoutY="187.0" text="Hello Label">
                <font>
                   <Font size="26.0" />
                </font>

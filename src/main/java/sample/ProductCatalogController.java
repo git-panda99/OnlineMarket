@@ -4,7 +4,13 @@ import classes.Product;
 import classes.ReadWriteFile;
 import classes.User;
 import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -13,6 +19,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Stage;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -23,8 +30,11 @@ import java.util.HashSet;
 
 public class ProductCatalogController {
 
-    @FXML private GridPane gridPane;
-
+    @FXML
+    private GridPane gridPane;
+    private static Product productInProductPage;
+    private static String farmerProductInProductPage;
+  
     public void initialize(){
         ArrayList<User> ul= ReadWriteFile.readFile();
         int i=0,j=0;
@@ -45,6 +55,24 @@ public class ProductCatalogController {
                 stockLabel.setStyle("-fx-padding: 4 2 2 5");
                 HBox priceStockHBox=new HBox(priceLabel,stockLabel);
                 Button seeMoreButton = new Button("See More");
+                seeMoreButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        Parent registerParent;
+                        try {
+                            productInProductPage=p;
+                            farmerProductInProductPage=u.getUsername();
+                            registerParent = FXMLLoader.load(getClass().getResource("ProductPage.fxml"));
+                            assert registerParent != null;
+                            Scene registerScene=new Scene(registerParent);
+                            Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+                            primaryStage.setScene(registerScene);
+                            primaryStage.show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
                 productVBox.getChildren().addAll(titleLabel, priceStockHBox, seeMoreButton);
                 //Image
                 ImageView imageView=new ImageView();
@@ -70,4 +98,11 @@ public class ProductCatalogController {
         }
     }
 
+    public static Product getProductInProductPage() {
+        return productInProductPage;
+    }
+
+    public static String getFarmerProductInProductPage() {
+        return farmerProductInProductPage;
+    }
 }

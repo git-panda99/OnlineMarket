@@ -45,4 +45,19 @@ public class Product {
         return Objects.equals(getTitle(), product.getTitle());
     }
 
+    public boolean order(){
+        return order(1);
+    }
+
+    public boolean order(int quantity){
+        if(stock-quantity>=0){
+            stock=stock-quantity;
+            return true;
+        }
+        return false;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
 }

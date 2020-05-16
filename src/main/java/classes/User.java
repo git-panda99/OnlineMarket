@@ -13,6 +13,7 @@ public class User {
     private String phoneNumber;
     private UserRole role;
     private ArrayList<Product> productList=new ArrayList<Product>(); //to be revised in future
+    private ArrayList<Order> orderList= new ArrayList<>();
 
     public User(String username, String passwordString, String name, String surnamae, String email, String phoneNumber, UserRole role) throws Exception{
         this.username=username;
@@ -30,6 +31,10 @@ public class User {
             return;
         }
         productList.add(p);
+    }
+
+    public void addOrder(Order o){
+        orderList.add(o);
     }
 
     public boolean containsProduct(Product p){
@@ -61,7 +66,11 @@ public class User {
         return productList;
     }
 
-    public String getUsername() {
+    public ArrayList<Order> getOrderList() {
+        return orderList;
+    }
+
+  public String getUsername() {
         return username;
     }
 

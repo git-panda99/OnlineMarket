@@ -4,3 +4,8 @@
     -fx-background-size: auto, 100%;
     -fx-background-position: right center;
 }
+
+.hyperlink {
+    -fx-border-color: transparent;
+    -fx-padding: 4 0 4 0;
+}

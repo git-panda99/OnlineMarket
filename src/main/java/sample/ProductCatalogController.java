@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,9 +27,10 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ProductCatalogController {
+    @FXML
+    private AnchorPane anchorPaneProductCatalog;
 
     @FXML
     private GridPane gridPane;
@@ -36,6 +38,7 @@ public class ProductCatalogController {
     private static String farmerProductInProductPage;
   
     public void initialize(){
+        anchorPaneProductCatalog.getStylesheets().add("style.css");
         ArrayList<User> ul= ReadWriteFile.readFile();
         int i=0,j=0;
         gridPane.setHgap(200);
@@ -104,5 +107,16 @@ public class ProductCatalogController {
 
     public static String getFarmerProductInProductPage() {
         return farmerProductInProductPage;
+    }
+
+    @FXML
+    private void menuHyperlinkClicked(ActionEvent event)throws Exception {
+        Parent registerParent = FXMLLoader.load(getClass().getResource("Menu.fxml"));
+        Scene registerScene=new Scene(registerParent);
+
+        Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        primaryStage.setScene(registerScene);
+        primaryStage.show();
     }
 }

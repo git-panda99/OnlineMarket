@@ -18,6 +18,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 
 public class AddProductController {
@@ -28,6 +29,9 @@ public class AddProductController {
     @FXML private Button addButton;
     @FXML private Button chooseImage;
     @FXML private ImageView imageView;
+    private BufferedImage bufferedImage=null;
+    private File fileSource;
+    private File fileDestination;
 
     @FXML public void addProduct(){
         String title=titleField.getText();
@@ -45,7 +49,7 @@ public class AddProductController {
             price = 0;
         }
 
-        if(title.trim().isEmpty()||description.trim().isEmpty()){
+        if(title.trim().isEmpty()||description.trim().isEmpty()||bufferedImage==null){
             System.out.println("All fields are mandatory");
 
             Alert alert=new Alert(Alert.AlertType.ERROR);
@@ -56,11 +60,12 @@ public class AddProductController {
             return;
         }
         ArrayList<User> ul= ReadWriteFile.readFile();
-        Product newProduct=new Product(title,description,stock,price);
+        Product newProduct=new Product(title,description,stock,price, fileDestination.getPath());
         User user= Main.getLoggedUser();
         int index=ul.indexOf(user);
         if(!ul.get(index).containsProduct(newProduct)){
             ul.get(index).addProduct(newProduct);
+            saveImage();
             ReadWriteFile.writeFile(ul);
             System.out.println("Added new product");
 
@@ -73,6 +78,7 @@ public class AddProductController {
             descriptionArea.setText("");
             stockField.setText("1");
             priceField.setText("0");
+            imageView.setImage(null);
 
             alert.showAndWait();
         }else{
@@ -96,12 +102,22 @@ public class AddProductController {
         FileChooser.ExtensionFilter extensionFilterPng= new FileChooser.ExtensionFilter("png files (*.png)","*.png");
         fileChooser.getExtensionFilters().addAll(extensionFilterJPG,extensionFilterJpg,extensionFilterPNG,extensionFilterPng);
 
-        File file= fileChooser.showOpenDialog(null);
+        fileSource = fileChooser.showOpenDialog(null);
+        fileDestination =new File("src/main/resources/"+ fileSource.getName());
         try {
-            BufferedImage bufferedImage = ImageIO.read(file);
+            bufferedImage = ImageIO.read(fileSource);
             Image image= SwingFXUtils.toFXImage(bufferedImage, null);
             imageView.setImage(image);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void saveImage() {
+        try {
+            Files.copy(fileSource.toPath(),fileDestination.toPath());
+            //ImageIO.write(bufferedImage, "jpg", fileSource);
         } catch (IOException e) {
             e.printStackTrace();
         }

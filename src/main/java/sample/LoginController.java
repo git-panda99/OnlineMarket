@@ -71,7 +71,7 @@ public class LoginController {
     }
 
     private void loginSuccessfulRedirect(ActionEvent event)throws Exception {
-        Parent registerParent = FXMLLoader.load(getClass().getResource("AddProduct.fxml"));
+        Parent registerParent = FXMLLoader.load(getClass().getResource("ProductCatalog.fxml"));
         Scene registerScene=new Scene(registerParent);
 
         Stage primaryStage= (Stage) ((Node)event.getSource()).getScene().getWindow();

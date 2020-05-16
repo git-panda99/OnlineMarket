@@ -7,14 +7,14 @@ public class Product {
     private String description;
     private int stock;
     private double price;
-    //private Image image;
+    private String image;
 
-    public Product(String title, String description, int stock, double price) {
+    public Product(String title, String description, int stock, double price, String image) {
         this.title = title;
         this.description = description;
         this.stock = stock;
         this.price = price;
-        //this.image = image;
+        this.image = image;
     }
 
     public String getTitle() {

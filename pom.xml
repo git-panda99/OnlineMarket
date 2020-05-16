@@ -31,7 +31,6 @@
                     <include>**/*.fxml</include>
                 </includes>
             </resource>
-            
         </resources>
     </build>
     
